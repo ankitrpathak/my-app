@@ -1,42 +1,17 @@
 import React, { useState } from 'react'
 
-export default function About() {
-
-    const toogleMode= () => {
-        if(styles.color === "black"){
-            newStyles({
-                color: "white",
-                backgroundColor: "black",
-                border: "black solid 1px"
-            })
-            newMode("Light")
-            
-        }
-        else{
-            newStyles({
-                color: "black",
-                backgroundColor: "white"
-            })
-            newMode("Dark")
-        }
-    }
-
-    const [mode, newMode] =useState("Dark");
-
-    const [styles, newStyles] =useState({
-        backgroundColor: "white",
-        color: "black"
-    });
+export default function About(props) {
 
     return (
     <>
         <div className='container'>
-            <h1>About Us</h1>
+            <h1 style={{color: props.mode==='dark'?'white':'#042743'}} className='my-3'>About Us</h1>
+
             <div className="accordion" id="accordionPanelsStayOpenExample">
-                <div className="accordion-item" style={styles}>
+                <div className="accordion-item" >
                     <h2 className="accordion-header">
-                    <button className="accordion-button" style={styles} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                        What is TextUtility?
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        What is TextUtils?
                     </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
@@ -46,11 +21,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-        </div>
-        <div className="container my-3">
-            <button className="btn btn-primary" onClick={toogleMode}>
-                Turn on {mode} Mode
-            </button>
         </div>
     </>
     )
